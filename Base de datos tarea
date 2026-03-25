@@ -1,1 +1,37 @@
 https://www.db-fiddle.com/f/nAHpeCgW7eHeyttpYVsyY5/4
+FROM PRODUCTO;
+
+
+/* ================================
+   SIMULACIÓN DE PROCEDIMIENTOS
+================================ */
+
+-- Catálogo ordenado
+SELECT * FROM PRODUCTO
+ORDER BY Precio DESC;
+
+-- Alerta de existencias (ejemplo: menor a 10)
+SELECT * FROM PRODUCTO
+WHERE Stock < 10;
+
+-- Registrar venta
+INSERT INTO VENTA (ProductoId, Cantidad, FechaHora)
+VALUES (1, 2, NOW());
+
+UPDATE PRODUCTO
+SET Stock = Stock - 2
+WHERE ProductoId = 1;
+
+-- Cambiar precio
+UPDATE PRODUCTO
+SET Precio = 2000
+WHERE ProductoId = 1;
+
+
+/* ================================
+   GROUP BY
+================================ */
+
+SELECT ProductoId, SUM(Cantidad) AS TotalVendido
+FROM VENTA
+GROUP BY ProductoId;
