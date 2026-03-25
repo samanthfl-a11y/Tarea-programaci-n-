@@ -1,4 +1,50 @@
 https://www.db-fiddle.com/f/nAHpeCgW7eHeyttpYVsyY5/4
+================================ */
+
+CREATE TABLE IF NOT EXISTS VENTA (
+    VentaId INT AUTO_INCREMENT PRIMARY KEY,
+    ProductoId INT,
+    Cantidad INT,
+    FechaHora DATETIME,
+    FOREIGN KEY (ProductoId) REFERENCES PRODUCTO(ProductoId)
+);
+
+
+/* ================================
+   INSERTAR DATOS
+================================ */
+
+INSERT INTO PRODUCTO (Descripcion, Precio, Stock) VALUES
+('Laptop Pro', 1200, 10),
+('Mouse Gamer', 50, 25),
+('Teclado Mecánico Pro', 150, 15),
+('Monitor 24 pulgadas', 300, 8),
+('Audífonos Bluetooth', 80, 0);
+
+
+/* ================================
+   AUMENTAR PRECIOS 15%
+================================ */
+
+UPDATE PRODUCTO
+SET Precio = Precio * 1.15;
+
+
+/* ================================
+   ELIMINAR SIN STOCK
+================================ */
+
+DELETE FROM PRODUCTO
+WHERE Stock = 0;
+
+
+/* ================================
+   CONSULTAS
+================================ */
+
+-- Entre 100 y 1000
+SELECT * FROM PRODUCTO
+WHERE Precio BETWEEN 100 AND 1000;
 FROM PRODUCTO;
 
 
